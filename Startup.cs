@@ -26,6 +26,10 @@ namespace HackathonStockPriceWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://stockapplicationawsapi2-dev.us-west-2.elasticbeanstalk.com/"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +47,7 @@ namespace HackathonStockPriceWebApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors(options => options.WithOrigins("http://stockapplicationawsapi2-dev.us-west-2.elasticbeanstalk.com/"));
         }
     }
 }

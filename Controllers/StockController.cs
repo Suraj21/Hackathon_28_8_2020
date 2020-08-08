@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HackathonStockPriceWebApi.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,7 @@ namespace HackathonStockPriceWebApi.Controllers
 
         // GET: api/Stock
         [HttpGet]
+        [EnableCors("AllowOrigin")]
         public List<Stock> Get()
         {
             IRandomNo radomNo = new GenerateNo();
@@ -31,6 +33,7 @@ namespace HackathonStockPriceWebApi.Controllers
 
         // GET: api/Stock/5
         [HttpGet("{id}", Name = "Get")]
+        [EnableCors("AllowOrigin")]
         public List<StockInfo> Get(int id)
         {
             IRandomNo radomNo = new GenerateNo();
@@ -42,6 +45,7 @@ namespace HackathonStockPriceWebApi.Controllers
         // GET: api/Stock/5
         [Route("GetStockInfo/{id}")]
         [HttpGet]
+        [EnableCors("AllowOrigin")]
         public List<StockInfo> GetStockInfo(int id)
         {
             
@@ -53,6 +57,7 @@ namespace HackathonStockPriceWebApi.Controllers
 
         [Route("GetCompanyDetails/{id}")]
         [HttpGet]
+        [EnableCors("AllowOrigin")]
         public List<Stock> GetCompanyDetails(int id)
         {
             IRandomNo radomNo = new GenerateNo();
