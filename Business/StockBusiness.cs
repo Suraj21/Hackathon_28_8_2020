@@ -22,7 +22,9 @@ namespace HackathonStockPriceWebApi
             {
                 var prices = new Prices { Date = dateTime, Price = _randomNo.GetRandomNo() };
                 DateWisePrice.Add(prices);
-                dateTime.AddDays(1);
+                //dateTime.AddDays(1);
+                var incrementedDate = dateTime.AddDays(1);
+                dateTime = incrementedDate;
             }
 
             List<Stock> Stocks = new List<Stock>
